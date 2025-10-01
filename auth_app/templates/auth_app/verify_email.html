@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}E-Posta Doğrulama{% endblock %}
+
+{% block content %}
+<div class="card shadow-lg p-4 mx-auto mt-5" style="max-width: 450px; border-radius: 1rem;">
+    <h2 class="text-center mb-3">E-Posta Doğrulama</h2>
+    <p class="text-muted text-center mb-4">
+        <strong>@{{ username }}</strong> hesabı için <strong>{{ user_email }}</strong> adresine gönderilen doğrulama kodunu giriniz.
+    </p>
+
+    {% if messages %}
+    <div class="mb-3">
+        {% for message in messages %}
+            {% if message.tags == "error" %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Kapat"></button>
+                </div>
+            {% else %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Kapat"></button>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+
+    <form method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="code" class="form-label">Doğrulama Kodu</label>
+            <input type="text" name="code" maxlength="6" id="code" 
+                   class="form-control text-center fw-bold" 
+                   placeholder="••••••" required>
+            <div class="invalid-feedback">Lütfen doğrulama kodunu giriniz.</div>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Doğrula</button>
+    </form>
+
+    <div class="text-center mt-3">
+        <small class="text-muted">Kod ulaşmadı mı? <a href="#">Tekrar gönder</a></small>
+    </div>
+</div>
+{% endblock %}

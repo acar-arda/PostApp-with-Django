@@ -1,0 +1,184 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin: 12px 0 6px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.dashboard-container {
+    max-width: 800px;
+    width: 95%;
+    margin: 60px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.1);
+}
+
+.profile-container {
+    max-width: 400px;
+    width: 95%;
+    margin: 80px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.1);
+}
+
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.change_password {
+    background-color: #d1d5db;
+    color: #111827;
+}
+
+.user {
+    background-color: #333333;
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: white;
+}
+
+.card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.welcome-msg {
+    margin-bottom: 30px;
+}
+
+.btn-logout {
+    float: right;
+}
+
+.btn-custom {
+    width: 100%;
+}
+
+.divider {
+    text-align: center;
+    margin: 15px 0;
+    position: relative;
+}
+
+.divider::before, .divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background-color: #dee2e6;
+}
+
+.divider::before {
+    left: 0;
+    width: 40%;
+}
+
+.divider::after {
+    right: 0;
+    width: 40%;
+}
+
+.actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.save {
+    background-color: #2563eb;
+    color: #fff;
+}
+
+.cancel {
+    background-color: #d1d5db;
+    color: #111827;
+}
+
+/* USER DROPDOWN */
+
+details {
+    position: relative;
+}
+
+details summary {
+    list-style: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.nav-item summary {
+    cursor: pointer;
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.nav-item summary::after {
+    content: "▼";
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+.nav-item[open] summary::after {
+    transform: rotate(180deg);
+}

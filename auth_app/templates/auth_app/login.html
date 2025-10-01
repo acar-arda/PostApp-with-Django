@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Giriş Yap{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <h2 class="text-center mb-4">Giriş Yap</h2>
+
+    {% if form.username.errors %}
+        <div class="alert alert-danger" role="alert">>
+            {% for error in form.username.errors %}
+                {{ error }}
+            {% endfor %}
+        </div>
+    {% elif form.errors %}
+        <div class="alert alert-danger" role="alert">>
+            Şifreniz yanlış.
+        </div>
+    {% endif %}
+
+    <form method="post" id="login-form">
+        {% csrf_token %}
+
+        <div class="mb-3 row align-items-center">
+            <label for="username" class="col-4 col-form-label">Kullanıcı Adı:</label>
+            <div class="col-8">
+                <input type="text" id="username" name="username" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="mb-3 row align-items-center">
+            <label for="password" class="col-4 col-form-label">Şifre:</label>
+            <div class="col-8">
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+        </div>
+        
+        <small class="float-end mb-3" style="float: right;"><a href="/forgot_password">Şifremi Unuttum</a></small>
+        
+        <button type="submit" class="btn btn-primary btn-custom mb-3">Giriş</button>
+
+        <div class="divider mt-0">veya</div>
+
+        <a href="{% url 'register' %}" class="btn btn-outline-secondary btn-custom">Kayıt Ol</a>
+    </form>
+</div>
+{% endblock %}

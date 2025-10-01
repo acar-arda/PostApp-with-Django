@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}Kayıt Ol{% endblock %}
+
+{% block content %}
+<div class="register-container">
+    <h2 class="text-center mb-4">Kayıt Ol</h2>
+    
+    {% if form.username.errors %}
+        <div class="alert alert-danger" role="alert">>
+            {% for error in form.username.errors %}
+                {{ error }}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if form.email.errors %}
+        <div class="alert alert-danger" role="alert">>
+            {% for error in form.email.errors %}
+                {{ error }}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if form.password2.errors %}
+        <div class="alert alert-danger" role="alert">>
+            {% for error in form.password2.errors %}
+                {{ error }}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="mb-3 row align-items-center">
+            <label for="name" class="col-4 col-form-label">Ad Soyad:</label>
+            <div class="col-8">
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="mb-3 row align-items-center">
+            <label for="username" class="col-4 col-form-label">Kullanıcı Adı:</label>
+            <div class="col-8">
+                <input type="text" id="username" name="username" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="mb-3 row align-items-center">
+            <label for="email" class="col-4 col-form-label">Email Adresi:</label>
+            <div class="col-8">
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="mb-3 row align-items-center">
+            <label for="password" class="col-4 col-form-label">Şifre:</label>
+            <div class="col-8">
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="mb-3 row align-items-center">
+            <label for="username" class="col-4 col-form-label">Şifre(Tekrar):</label>
+            <div class="col-8">
+                <input type="password" id="password2" name="password2" class="form-control" required>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-custom mb-3">Kayıt Ol</button>
+
+        <div class="divider mt-0">veya</div>
+
+        <a href="{% url 'login' %}" class="btn btn-outline-secondary btn-custom">Giriş Yap</a>
+    </form>
+</div>
+{% endblock %}

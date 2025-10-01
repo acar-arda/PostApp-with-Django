@@ -1,0 +1,24 @@
+.register-container {
+    max-width: 415px;
+    width: 95%;
+    margin: 80px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.1);
+}
+
+.login-container {
+    max-width: 400px;
+    width: 95%;
+    margin: 80px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.1);
+}
+
+.change_password {
+    background-color: #d1d5db;
+    color: #111827;
+}

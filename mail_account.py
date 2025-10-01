@@ -1,0 +1,2 @@
+email = "" # YOUR EMAIL ADDRESS
+password = "" # YOUR EMAIL APP PASSWORD (NOT EMAIL)

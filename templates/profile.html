@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Profil{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <h2>Profil Bilgileri</h2>
+    <form method="post">
+        {% csrf_token %}
+
+        {% if profile_form.errors %}
+            <div class="alert alert-danger" role="alert">
+                Bu kullanıcı adı zaten mevcut.
+            </div>
+        {% endif %}
+
+        <label for="name">Ad Soyad:</label>
+        <input type="text" id="name" name="name" placeholder="Adınızı ve soyadınızı giriniz" value="{{ user.first_name }} {{ user.last_name }}">
+        
+        <label for="username">Kullanıcı Adı:</label>
+        <input type="text" id="username" name="username" placeholder="Kullanıcı adınızı giriniz" value="{{ user.username }}">
+        
+        <label for="email">E-posta:</label>
+        <input type="email" id="email" name="email" placeholder="E-posta adresinizi giriniz" value="{{ user.email }}">
+        <small class="text-success">✔ Doğrulandı</small>
+        
+        <div class="actions">
+            <button type="button" class="change_password" onclick="window.location.href='/change_password'">Şifremi Değiştir</button>
+        </div>
+        
+        <div class="actions">
+            <button type="submit" class="save">Kaydet</button>
+            <button type="button" class="cancel" onclick="window.location.href='/dashboard'">İptal</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

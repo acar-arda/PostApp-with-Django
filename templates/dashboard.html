@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="d-flex justify-content-between align-items-center welcome-msg">
+        <h2>Merhaba, {{ request.user.first_name }}</h2>
+        <a href="{% url 'logout' %}" class="btn btn-danger">Çıkış Yap</a>
+    </div>
+
+    <p>Burası giriş yapmış kullanıcıların görebileceği sayfa.</p>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Profil</h5>
+                    <p class="card-text">Kullanıcı bilgilerini güncelleyin.</p>
+                    <a href="/profile" class="btn btn-primary btn-sm">Git</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Siparişler</h5>
+                    <p class="card-text">Sipariş geçmişinizi görüntüleyin.</p>
+                    <a href="" class="btn btn-primary btn-sm">Git</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Ayarlar</h5>
+                    <p class="card-text">Hesap ayarlarınızı yönetin.</p>
+                    <a href="" class="btn btn-primary btn-sm">Git</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

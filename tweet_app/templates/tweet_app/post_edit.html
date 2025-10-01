@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Paylaşım Düzenleme{% endblock %}
+
+{% block content %}
+<div class="post-form">
+    <h2>Paylaşım Düzenleme</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <label for="content">Mesaj:</label>
+        <input type="text" id="content" name="content" placeholder="Mesajınızı giriniz." value="{{ post.content }}">
+        
+        <label for="old_image">Mevcut Resim:</label>
+        {% if post.image %}
+            <img src="{{ post.image.url }}" alt="Mevcut resim" width="150"><br>
+        {% else %}
+            (Resim yok)
+        {% endif %}
+
+        <label for="image">Yeni Resim:</label>
+        <input type="file" id="image" name="image">
+        
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px;">
+            <button type="submit">Düzenle</button>
+            <button type="button" onclick="window.location.href='/'">İptal</button>
+        </div>
+            
+    </form>
+</div>
+{% endblock %}

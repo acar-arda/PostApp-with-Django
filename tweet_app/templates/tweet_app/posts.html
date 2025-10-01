@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Ana Sayfa{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    <div class="post-form">
+        <h2>Yeni Paylaşım</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Paylaş</button>
+        </form>
+    </div>
+{% endif %}
+
+    <div class="posts">
+    {% for post in posts %}
+        <div class="post-card">
+            <div class="post-header">{{ post.user.first_name }} {{ post.user.last_name }} - @{{ post.user.username }}</div>
+            
+            {% if post.user == request.user %}
+            <form action="{% url 'post_edit' post.id %}" method="post">
+                {% csrf_token %}
+                <button class="btn btn-danger" style="margin-right: 65px;" type="submit">✍🏻 Düzenle</button>
+            </form>
+            {% endif %}
+
+            {% if post.user == request.user %}
+            <form action="{% url 'post_delete' post.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button class="btn btn-danger" type="submit" onclick="return confirm('Bu postu silmek istediğinize emin misiniz?');">🗑️ Sil</button>
+            </form>
+            {% endif %}
+
+            <div class="post-content">{{ post.content }}</div>
+            
+            {% if post.thumbnail %}
+            <img class="post-thumb" src="{{ post.thumbnail.url }}" alt="Thumbnail" onclick="openModal('{{ post.image.url }}')">
+            {% endif %}
+            <div class="post-date">{{ post.created_at|date:"d M Y H:i" }}</div>
+        </div>
+    {% endfor %}
+    </div>
+
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+{% endblock %}
